@@ -44,7 +44,7 @@
   }
 
   // ---- Active nav link on scroll ----
-  var sectionIds = ["how", "architecture", "code", "platform", "proof", "tiers"];
+  var sectionIds = ["how", "package", "architecture", "code", "platform", "tiers"];
   var navAnchors = {};
   document.querySelectorAll(".nav-links a").forEach(function (a) {
     var href = a.getAttribute("href");

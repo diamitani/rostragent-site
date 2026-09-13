@@ -23,10 +23,10 @@
       </button>
       <div class="nav-links" id="navLinks">
         <a href="#how">How it works</a>
+        <a href="#package">Build package</a>
         <a href="#architecture">Architecture</a>
         <a href="#code">Code</a>
         <a href="#platform">Platform</a>
-        <a href="#proof">Built on Rostr</a>
         <a href="#tiers">Access</a>
       </div>
       <div class="nav-cta">
@@ -132,8 +132,35 @@
       </div>
     </section>
 
+    <!-- Build package -->
+    <section class="section" id="package">
+      <div class="container">
+        <p class="eyebrow reveal">Before the work starts</p>
+        <h2 class="reveal">First, Rostr figures out <span class="accent">what to build.</span></h2>
+        <p class="section-sub reveal">The jobs-to-be-done builder turns your plain-language goal into a complete build package — the plan the agent team will execute. You review and approve it before a single worker starts.</p>
+        <div class="package-grid">
+          <div class="package-card reveal">
+            <h3>What's in the package</h3>
+            <ul>
+              <li><strong>PRD</strong> — what gets built, for whom, and what "done" means</li>
+              <li><strong>Architecture diagram</strong> — how the pieces fit together</li>
+              <li><strong>System architecture</strong> — data models, APIs, infrastructure</li>
+              <li><strong>Task breakdown</strong> — the ordered jobs to be done, each with acceptance criteria</li>
+            </ul>
+          </div>
+          <div class="package-card package-card--example reveal">
+            <h3>Example: a customer portal</h3>
+            <p class="package-quote">"I need a portal where clients can view invoices, pay online, and open support tickets."</p>
+            <div class="package-arrow" aria-hidden="true">&darr;</div>
+            <p>The builder returns the full package: a PRD with user stories, a component diagram, the database schema and API surface, and the ordered task list. You adjust it, approve it — then the runtime builds exactly that.</p>
+          </div>
+        </div>
+        <p class="footnote reveal">The package is the contract. What you approve is what gets built — no more "the agent built the wrong thing."</p>
+      </div>
+    </section>
+
     <!-- Architecture -->
-    <section class="section" id="architecture">
+    <section class="section section--alt" id="architecture">
       <div class="container">
         <p class="eyebrow reveal">Product anatomy</p>
         <h2 class="reveal">Five layers. One runtime.</h2>
@@ -164,7 +191,7 @@
     </section>
 
     <!-- Code -->
-    <section class="section section--alt" id="code">
+    <section class="section" id="code">
       <div class="container">
         <p class="eyebrow reveal">The API</p>
         <h2 class="reveal">This is the whole integration.</h2>
@@ -179,23 +206,23 @@
   -H "Authorization: Bearer YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "project_id": "artispreneur",
-    "goal": "Build a press kit for Maya Reyes: bio, photos, tour dates, streaming links."
+    "project_id": "client-portal",
+    "goal": "Build a customer portal: clients view invoices, pay online, and open support tickets."
   }'
 
 # The response is a stream of finished work:
-# event: task_started   {"task": "Draft artist bio"}
-# event: task_done      {"task": "Draft artist bio", "verified": true}
-# event: task_started   {"task": "Collect streaming links"}
-# event: task_done      {"task": "Collect streaming links", "verified": true}
-# event: run_complete   {"artifacts": ["epk/maya-reyes.html"]}</code></pre>
+# event: task_started   {"task": "Design database schema"}
+# event: task_done      {"task": "Design database schema", "verified": true}
+# event: task_started   {"task": "Build invoice pages"}
+# event: task_done      {"task": "Build invoice pages", "verified": true}
+# event: run_complete   {"artifacts": ["portal/invoices.html", "portal/api-spec.json"]}</code></pre>
         </div>
         <p class="footnote reveal">Models are selected per task through the AI gateway — Claude or OpenAI — without changing your code or your skills.</p>
       </div>
     </section>
 
     <!-- Platform -->
-    <section class="section" id="platform">
+    <section class="section section--alt" id="platform">
       <div class="container">
         <p class="eyebrow reveal">The platform story</p>
         <h2 class="reveal">One runtime. Many products.</h2>
@@ -203,8 +230,8 @@
         <div class="platform-grid">
           <div class="platform-card reveal">
             <span class="tag">Project 01</span>
-            <h3>Artispreneur</h3>
-            <p>The music-business platform: EPK Studio, a 78,000-contact industry directory, contracts, and an academy — all running as agents on Rostr.</p>
+            <h3>Client portal</h3>
+            <p>A customer portal — invoice views, online payments, support tickets — planned by the jobs-to-be-done builder and built by agents, all on Rostr.</p>
           </div>
           <div class="platform-card platform-card--next reveal">
             <span class="tag">Project 02</span>
@@ -213,27 +240,6 @@
           </div>
         </div>
         <p class="footnote reveal">State, memory, sources, and entitlements are namespaced by project — products share infrastructure without sharing data.</p>
-      </div>
-    </section>
-
-    <!-- Proof -->
-    <section class="section section--alt" id="proof">
-      <div class="container">
-        <p class="eyebrow reveal">Proof</p>
-        <h2 class="reveal">Built on Rostr.</h2>
-        <div class="proof-card reveal">
-          <div class="proof-body">
-            <span class="tag">Artispreneur</span>
-            <h3>EPK Studio — your press kit in a day</h3>
-            <p>A customer answers a short quiz. A Rostr run drafts the bio, assembles photos and links, and produces a public press kit page. Stripe takes the $29 payment; the page goes live. The whole flow — generation, commerce, publishing — runs through one API.</p>
-            <div class="proof-flow">
-              <span>Quiz</span><span class="arrow" aria-hidden="true">&rarr;</span>
-              <span>AI generation</span><span class="arrow" aria-hidden="true">&rarr;</span>
-              <span>Stripe</span><span class="arrow" aria-hidden="true">&rarr;</span>
-              <span>Public EPK</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
