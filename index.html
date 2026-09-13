@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rostr — The Operating System for Agent Teams</title>
+  <meta name="description" content="Rostr is the operating system for agent teams. Describe the goal in plain language — Rostr plans it, staffs it, runs it, and remembers it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234c6ef5'/%3E%3Cpath d='M10 22V10h6.5c2.5 0 4.5 1.6 4.5 4s-2 4-4.5 4H13v4h-3zm3-7h3.3c1.2 0 2.2-.8 2.2-2s-1-2-2.2-2H13v4z' fill='white'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">R</span>
+        <span class="brand-name">Rostr</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#how">How it works</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#code">Code</a>
+        <a href="#platform">Platform</a>
+        <a href="#proof">Built on Rostr</a>
+        <a href="#tiers">Access</a>
+      </div>
+      <div class="nav-cta">
+        <a href="https://rostr-paper.vercel.app" class="btn btn-ghost" target="_blank" rel="noopener">Read the paper</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow reveal">Agent infrastructure</p>
+      <h1 class="reveal">The operating system<br />for agent teams.</h1>
+      <p class="lede reveal">Describe the goal in plain language. Rostr plans it, staffs it, runs it, and remembers it.</p>
+      <div class="hero-cta reveal">
+        <a href="https://rostr-paper.vercel.app" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Read the paper</a>
+        <a href="#code" class="btn btn-ghost btn-lg">See how little code it takes</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-num">1</span>
+          <span class="stat-label">shared runtime API</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5</span>
+          <span class="stat-label">product layers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">35</span>
+          <span class="stat-label">packaged skills</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contrast -->
+    <section class="section" id="contrast">
+      <div class="container">
+        <p class="eyebrow reveal">Why Rostr</p>
+        <h2 class="reveal">Other frameworks make you program the team.<br /><span class="accent">Rostr compiles it.</span></h2>
+        <p class="section-sub reveal">Frameworks like CrewAI ask you to define every agent's role, write every task, and wire the crew together in code. That is programming, not delegating. Rostr takes the opposite approach: you describe the outcome in plain language, and the system builds the team for you.</p>
+        <div class="compare-grid">
+          <div class="compare-card reveal">
+            <h3>The programmed team</h3>
+            <ul>
+              <li>You define each agent's role and backstory</li>
+              <li>You write every task by hand</li>
+              <li>You wire the sequence and handoffs in code</li>
+              <li>You build your own state, memory, and retries</li>
+              <li>Every new product means a new wiring job</li>
+            </ul>
+          </div>
+          <div class="compare-card compare-card--rostr reveal">
+            <h3>The compiled team</h3>
+            <ul>
+              <li>You describe the goal in one paragraph</li>
+              <li><strong>PAL</strong> turns it into a structured work order</li>
+              <li><strong>NPAO</strong> triages and orders the tasks</li>
+              <li>The runtime staffs specialist workers and verifies their work</li>
+              <li>The <strong>hub</strong> keeps shared state; the <strong>context engine</strong> remembers across sessions</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footnote reveal">Rostr is not a wrapper around other frameworks. It is its own runtime, designed around one idea: the person asking for the work should not have to manage the workers.</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section--alt" id="how">
+      <div class="container">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 class="reveal">From one paragraph to finished work.</h2>
+        <p class="section-sub reveal">Every run through Rostr passes through the same five stages. You write the first line; the system handles the rest.</p>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">01</div>
+            <h3>PAL <span class="def">— the work-order compiler</span></h3>
+            <p><strong>Prompt Assembly Language</strong> takes your plain-language goal and compiles it into a structured work order: tasks, the skills each task needs, and the rules the workers must follow.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">02</div>
+            <h3>NPAO <span class="def">— the triage desk</span></h3>
+            <p><strong>Needs Prioritization and Ordering</strong> looks at the work order, decides what matters most, and sequences the tasks so nothing important waits behind busywork.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">03</div>
+            <h3>Runtime <span class="def">— the staffing office</span></h3>
+            <p>The runtime staffs each task with a specialist worker, runs them, checks their results, and retries once when something comes back wrong. Built once, deployed once, shared by every project.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">04</div>
+            <h3>Hub <span class="def">— the shared memory</span></h3>
+            <p>Every worker reads from and writes to the same state: progress, decisions, and reference material. Nothing gets lost between tasks, and nothing is duplicated.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">05</div>
+            <h3>Context engine <span class="def">— the long memory</span></h3>
+            <p>A background loop watches every session. When the context window fills or time passes, it saves the session, compresses it, and files it in a master library. Next session picks up where the last one left off.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <p class="eyebrow reveal">Product anatomy</p>
+        <h2 class="reveal">Five layers. One runtime.</h2>
+        <p class="section-sub reveal">Rostr is a stack, not a script. Each layer has one job, and each one is replaceable without touching the others.</p>
+        <div class="layers">
+          <div class="layer reveal">
+            <div class="layer-head"><span class="layer-num">L1</span><h3>Runtime</h3></div>
+            <p>One shared API, deployed once. Agents are definition files, not separate programs. Your app calls the API; the runtime does the rest.</p>
+          </div>
+          <div class="layer reveal">
+            <div class="layer-head"><span class="layer-num">L2</span><h3>Orchestration</h3></div>
+            <p>PAL and NPAO: the compiler and the triage desk. Plain language in, ordered work out.</p>
+          </div>
+          <div class="layer reveal">
+            <div class="layer-head"><span class="layer-num">L3</span><h3>State</h3></div>
+            <p>The hub. Shared, persistent state for every run — progress, decisions, references — namespaced by project.</p>
+          </div>
+          <div class="layer reveal">
+            <div class="layer-head"><span class="layer-num">L4</span><h3>Tools</h3></div>
+            <p>Generic tools through Composio, proprietary tools through your own hosted MCP servers. Skills stay portable markdown.</p>
+          </div>
+          <div class="layer reveal">
+            <div class="layer-head"><span class="layer-num">L5</span><h3>Reference</h3></div>
+            <p>The context engine (session memory) and <strong>RAG DAL</strong> — the research layer that ingests URLs and documents, scores sources by tier, and refuses to guess when it finds nothing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code -->
+    <section class="section section--alt" id="code">
+      <div class="container">
+        <p class="eyebrow reveal">The API</p>
+        <h2 class="reveal">This is the whole integration.</h2>
+        <p class="section-sub reveal">Your app sends a goal. Rostr streams back finished work. No agent definitions, no wiring, no orchestration code on your side.</p>
+        <div class="code-window reveal">
+          <div class="code-bar">
+            <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+            <span class="code-title">POST /api/v1/run</span>
+            <button class="copy-btn" id="copyBtn" type="button">Copy</button>
+          </div>
+          <pre class="code-body"><code id="codeSample">curl -X POST https://api.rostr.dev/api/v1/run \
+  -H "Authorization: Bearer YOUR_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_id": "artispreneur",
+    "goal": "Build a press kit for Maya Reyes: bio, photos, tour dates, streaming links."
+  }'
+
+# The response is a stream of finished work:
+# event: task_started   {"task": "Draft artist bio"}
+# event: task_done      {"task": "Draft artist bio", "verified": true}
+# event: task_started   {"task": "Collect streaming links"}
+# event: task_done      {"task": "Collect streaming links", "verified": true}
+# event: run_complete   {"artifacts": ["epk/maya-reyes.html"]}</code></pre>
+        </div>
+        <p class="footnote reveal">Models are selected per task through the AI gateway — Claude or OpenAI — without changing your code or your skills.</p>
+      </div>
+    </section>
+
+    <!-- Platform -->
+    <section class="section" id="platform">
+      <div class="container">
+        <p class="eyebrow reveal">The platform story</p>
+        <h2 class="reveal">One runtime. Many products.</h2>
+        <p class="section-sub reveal">A new product on Rostr is not a new build. It is a new project definition pointing at the same runtime — the same API, the same orchestration, the same skills library.</p>
+        <div class="platform-grid">
+          <div class="platform-card reveal">
+            <span class="tag">Project 01</span>
+            <h3>Artispreneur</h3>
+            <p>The music-business platform: EPK Studio, a 78,000-contact industry directory, contracts, and an academy — all running as agents on Rostr.</p>
+          </div>
+          <div class="platform-card platform-card--next reveal">
+            <span class="tag">Project 02</span>
+            <h3>Your product here</h3>
+            <p>Same runtime, same skills library. A new <code>project_id</code>, a new agent definition, and your product is staffed.</p>
+          </div>
+        </div>
+        <p class="footnote reveal">State, memory, sources, and entitlements are namespaced by project — products share infrastructure without sharing data.</p>
+      </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="section section--alt" id="proof">
+      <div class="container">
+        <p class="eyebrow reveal">Proof</p>
+        <h2 class="reveal">Built on Rostr.</h2>
+        <div class="proof-card reveal">
+          <div class="proof-body">
+            <span class="tag">Artispreneur</span>
+            <h3>EPK Studio — your press kit in a day</h3>
+            <p>A customer answers a short quiz. A Rostr run drafts the bio, assembles photos and links, and produces a public press kit page. Stripe takes the $29 payment; the page goes live. The whole flow — generation, commerce, publishing — runs through one API.</p>
+            <div class="proof-flow">
+              <span>Quiz</span><span class="arrow" aria-hidden="true">&rarr;</span>
+              <span>AI generation</span><span class="arrow" aria-hidden="true">&rarr;</span>
+              <span>Stripe</span><span class="arrow" aria-hidden="true">&rarr;</span>
+              <span>Public EPK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tiers -->
+    <section class="section" id="tiers">
+      <div class="container">
+        <p class="eyebrow reveal">Access</p>
+        <h2 class="reveal">Use it your way.</h2>
+        <div class="tier-grid">
+          <div class="tier reveal">
+            <h3>Open source</h3>
+            <p class="tier-price">MIT</p>
+            <p>The full runtime, orchestration, and reference layers. Self-host it, read every line, fork it.</p>
+            <a href="https://github.com/diamitani" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="tier tier--featured reveal">
+            <h3>Rostr Cloud</h3>
+            <p class="tier-price">Coming soon</p>
+            <p>The hosted API. Send a goal, get finished work — no servers, no deploys, usage-based billing.</p>
+            <a href="#contact" class="btn btn-primary">Get notified</a>
+          </div>
+          <div class="tier reveal">
+            <h3>Skills library</h3>
+            <p class="tier-price">Portable</p>
+            <p>Thirty-five packaged services in plain markdown — EPKs, outreach, contracts, research. Drop them into any Rostr runtime.</p>
+            <a href="https://github.com/diamitani" class="btn btn-ghost" target="_blank" rel="noopener">Browse skills</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--cta" id="contact">
+      <div class="container">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="reveal">Stop programming your team.<br />Start describing the outcome.</h2>
+        <div class="cta-row reveal">
+          <a href="https://rostr-paper.vercel.app" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Read the paper</a>
+          <a href="https://github.com/diamitani" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-ghost btn-lg">patrick.diamitani@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <span class="brand-mark">R</span>
+        <span class="brand-name">Rostr</span>
+      </div>
+      <p class="footer-note">The operating system for agent teams.</p>
+      <div class="footer-links">
+        <a href="https://rostr-paper.vercel.app" target="_blank" rel="noopener">Paper</a>
+        <a href="https://github.com/diamitani" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:patrick.diamitani@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
