@@ -77,6 +77,33 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
   margin-top: 32px;
 }
 
+.status-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 720px;
+  margin-top: 24px;
+  padding: 14px 16px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(76, 110, 245, 0.35);
+  border-radius: var(--radius);
+}
+
+.pill {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-top: 2px;
+}
+
 .accent { color: var(--accent-text); }
 
 code {

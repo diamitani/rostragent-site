@@ -56,7 +56,7 @@
           <span class="stat-label">product layers</span>
         </div>
         <div class="stat">
-          <span class="stat-num">35</span>
+          <span class="stat-num">369</span>
           <span class="stat-label">packaged skills</span>
         </div>
       </div>
@@ -135,9 +135,9 @@
     <!-- Build package -->
     <section class="section" id="package">
       <div class="container">
-        <p class="eyebrow reveal">Before the work starts</p>
+        <p class="eyebrow reveal">Before the work starts · Now building</p>
         <h2 class="reveal">First, Rostr figures out <span class="accent">what to build.</span></h2>
-        <p class="section-sub reveal">The jobs-to-be-done builder turns your plain-language goal into a complete build package — the plan the agent team will execute. You review and approve it before a single worker starts.</p>
+        <p class="section-sub reveal">The jobs-to-be-done builder will turn your plain-language goal into a complete build package — the plan the agent team will execute. You review and approve it before a single worker starts.</p>
         <div class="package-grid">
           <div class="package-card reveal">
             <h3>What's in the package</h3>
@@ -202,7 +202,7 @@
             <span class="code-title">POST /api/v1/run</span>
             <button class="copy-btn" id="copyBtn" type="button">Copy</button>
           </div>
-          <pre class="code-body"><code id="codeSample">curl -X POST https://api.rostr.dev/api/v1/run \
+          <pre class="code-body"><code id="codeSample">curl -X POST https://rostr-platform.vercel.app/api/v1/run \
   -H "Authorization: Bearer YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -217,7 +217,8 @@
 # event: task_done      {"task": "Build invoice pages", "verified": true}
 # event: run_complete   {"artifacts": ["portal/invoices.html", "portal/api-spec.json"]}</code></pre>
         </div>
-        <p class="footnote reveal">Models are selected per task through the AI gateway — Claude or OpenAI — without changing your code or your skills.</p>
+        <p class="status-note reveal"><span class="pill">Live preview</span> The endpoint above responds today. Runs are currently mocked while the production model key is configured — same URL, same contract, with live models once enabled.</p>
+        <p class="footnote reveal">Models are selected per task through the AI gateway — Claude or OpenAI — without changing your code or your skills, once the production model key is configured.</p>
       </div>
     </section>
 
@@ -253,19 +254,19 @@
             <h3>Open source</h3>
             <p class="tier-price">MIT</p>
             <p>The full runtime, orchestration, and reference layers. Self-host it, read every line, fork it.</p>
-            <a href="https://github.com/diamitani" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/diamitani/rostr-core" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
           </div>
           <div class="tier tier--featured reveal">
             <h3>Rostr Cloud</h3>
             <p class="tier-price">Coming soon</p>
-            <p>The hosted API. Send a goal, get finished work — no servers, no deploys, usage-based billing.</p>
-            <a href="#contact" class="btn btn-primary">Get notified</a>
+            <p>The hosted API. Send a goal, get finished work — no servers, no deploys, planned usage-based billing.</p>
+            <a href="mailto:patrick.diamitani@gmail.com?subject=Rostr%20Cloud%20waitlist" class="btn btn-primary">Join the waitlist</a>
           </div>
           <div class="tier reveal">
             <h3>Skills library</h3>
             <p class="tier-price">Portable</p>
-            <p>Thirty-five packaged services in plain markdown — EPKs, outreach, contracts, research. Drop them into any Rostr runtime.</p>
-            <a href="https://github.com/diamitani" class="btn btn-ghost" target="_blank" rel="noopener">Browse skills</a>
+            <p>369 packaged skills in plain markdown — EPKs, outreach, contracts, research. Drop them into any Rostr runtime.</p>
+            <a href="https://github.com/diamitani/rostr-platform/tree/main/skills" class="btn btn-ghost" target="_blank" rel="noopener">Browse skills</a>
           </div>
         </div>
       </div>
@@ -279,7 +280,7 @@
         <div class="cta-row reveal">
           <a href="https://rostr-paper.vercel.app" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Read the paper</a>
           <a href="https://github.com/diamitani" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-ghost btn-lg">patrick.diamitani@gmail.com</a>
+          <a href="mailto:patrick.diamitani@gmail.com?subject=Rostr%20inquiry" class="btn btn-ghost btn-lg">patrick.diamitani@gmail.com</a>
         </div>
       </div>
     </section>
@@ -295,7 +296,7 @@
       <div class="footer-links">
         <a href="https://rostr-paper.vercel.app" target="_blank" rel="noopener">Paper</a>
         <a href="https://github.com/diamitani" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:patrick.diamitani@gmail.com">Contact</a>
+        <a href="mailto:patrick.diamitani@gmail.com?subject=Rostr%20inquiry">Contact</a>
       </div>
     </div>
   </footer>
